@@ -239,7 +239,7 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("Next", "status nex")
         button = buttons.build_menu(3)
-    msg += f"<b>Tᴀsᴋs:</b> {tasks}{bmax_task} <b> | ᴜᴘᴛɪᴍᴇ:</b> {currentTime} <b>| ғʀᴇᴇ:</b> {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
+    msg += f"<b>Tasks:</b> {tasks}{bmax_task} <b> | Uptime:</b> {currentTime} <b>| Free:</b> {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
     return msg, button
 
 
