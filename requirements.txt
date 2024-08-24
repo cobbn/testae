@@ -10,7 +10,7 @@ bencoding
 cinemagoer
 cloudscraper
 dnspython
-git+https://github.com/Hrishi2861/pyrofork-2.2.11-peer-fix.git
+pyrofork==2.2.11
 feedparser
 flask
 gevent
