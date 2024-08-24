@@ -398,7 +398,7 @@ if BASE_URL:
         shell=True,
     )
 
-srun(["xnox", "-d", "--profile=."])
+srun(["qbittorrent-nox", "-d", "--profile=."])
 if not ospath.exists('.netrc'):
     with open('.netrc', 'w'):
        pass
@@ -410,7 +410,7 @@ with open("a2c.conf", "a+") as a:
     if TORRENT_TIMEOUT is not None:
         a.write(f"bt-stop-timeout={TORRENT_TIMEOUT}\n")
     a.write(f"bt-tracker=[{trackers}]")
-srun(["xria", "--conf-path=/usr/src/app/a2c.conf"])
+srun(["aria2c", "--conf-path=/usr/src/app/a2c.conf"])
 
 if ospath.exists('accounts.zip'):
     if ospath.exists('accounts'):
