@@ -10,7 +10,7 @@ bencoding
 cinemagoer
 cloudscraper
 dnspython
-electrogram
+pyrofork==2.2.11
 feedparser
 flask
 gevent
