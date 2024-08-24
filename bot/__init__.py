@@ -177,7 +177,7 @@ user = ''
 USER_SESSION_STRING = environ.get('USER_SESSION_STRING', '')
 if len(USER_SESSION_STRING) != 0:
     try:
-        user = wztgClient('user', TELEGRAM_API, TELEGRAM_HASH, session_string = USER_SESSION_STRING, parse_mode = enums.ParseMode.HTML, no_updates = True).start()
+        user = wztgClient('user', TELEGRAM_API, TELEGRAM_HASH, session_string = USER_SESSION_STRING, workers=1000, parse_mode = enums.ParseMode.HTML, no_updates = True).start()
         IS_PREMIUM_USER = user.me.is_premium
     except Exception as e:
         error(f"Failed making client from USER_SESSION_STRING : {e}")
