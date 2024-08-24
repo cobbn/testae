@@ -20,11 +20,11 @@ setdefaulttimeout(600)
 
 pyroutils.MIN_CHAT_ID = -999999999999
 pyroutils.MIN_CHANNEL_ID = -100999999999999
+botStartTime = time()
 
 getLogger("pymongo").setLevel(ERROR)
 getLogger("aiohttp").setLevel(ERROR)
 getLogger("httpx").setLevel(ERROR)
-botStartTime = time()
 
 class CustomFormatter(Formatter):
     def format(self, record):
