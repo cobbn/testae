@@ -42,7 +42,7 @@ class TgUploader:
         self.__media_dict = {'videos': {}, 'documents': {}}
         self.__last_msg_in_group = False
         self.__prm_media = False
-        self.__client = user
+        self.__client = bot
         self.__up_path = ''
         self.__ldump = ''
         self.__mediainfo = False
@@ -302,6 +302,7 @@ class TgUploader:
                                         await self.__send_media_group(subkey, key, msgs)
                     self.__last_msg_in_group = False
                     self.__last_uploaded = 0
+                    await self.__switching_client()
                     await self.__upload_file(cap_mono, file_)
                     if not isDeleted:
                         values_list = list(self.__leechmsg.values())
