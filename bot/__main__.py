@@ -62,6 +62,7 @@ async def stats(_, message):
     currentTime = get_readable_time(time() - botStartTime)
     osUptime = get_readable_time(time() - boot_time())
     cpuUsage = cpu_percent(interval=0.5)
+    traf = get_readable_file_size(net_io_counters().bytes_sent + net_io_counters().bytes_recv)
     limit_mapping = {
         'Torrent'  : config_dict.get('TORRENT_LIMIT',  '∞'),
         'Gdrive'   : config_dict.get('GDRIVE_LIMIT',   '∞'),
@@ -76,6 +77,7 @@ async def stats(_, message):
         f'<code>• CPU usage  :</code> {cpuUsage}%\n'\
         f'<code>• RAM usage  :</code> {memory.percent}%\n'\
         f'<code>• Disk usage :</code> {disk}%\n'\
+        f'<code>• Band usage :</code> {traf}\n'\
         f'<code>• Free space :</code> {get_readable_file_size(free)}\n'\
         f'<code>• Total space:</code> {get_readable_file_size(total)}\n\n'
             
