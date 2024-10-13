@@ -62,9 +62,9 @@ async def stats(_, message):
     currentTime = get_readable_time(time() - botStartTime)
     osUptime = get_readable_time(time() - boot_time())
     cpuUsage = cpu_percent(interval=0.5)
-    sent = get_readable_file_size(psutil.net_io_counters().bytes_sent)
-    recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
-    traf = get_readable_file_size(psutil.net_io_counters().bytes_sent + psutil.net_io_counters().bytes_recv)
+    sent = get_readable_file_size(net_io_counters().bytes_sent)
+    recv = get_readable_file_size(net_io_counters().bytes_recv)
+    traf = get_readable_file_size(net_io_counters().bytes_sent + net_io_counters().bytes_recv)
     limit_mapping = {
         'Torrent'  : config_dict.get('TORRENT_LIMIT',  '∞'),
         'Gdrive'   : config_dict.get('GDRIVE_LIMIT',   '∞'),
