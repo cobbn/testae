@@ -16,7 +16,7 @@ from functools import partial, wraps
 from concurrent.futures import ThreadPoolExecutor
 
 from aiohttp import ClientSession as aioClientSession
-from psutil import virtual_memory, cpu_percent, disk_usage
+from psutil import virtual_memory, cpu_percent, disk_usage, net_io_counters
 from requests import get as rget
 from mega import MegaApi
 from pyrogram.enums import ChatType
@@ -203,6 +203,9 @@ def get_readable_message():
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
+    sent = get_readable_file_size(net_io_counters().bytes_sent)
+    recv = get_readable_file_size(net_io_counters().bytes_recv)
+    traf = get_readable_file_size(net_io_counters().bytes_sent + net_io_counters().bytes_recv)
     if config_dict['BOT_MAX_TASKS']:
         bmax_task = f"/{config_dict['BOT_MAX_TASKS']}"
     else:
@@ -239,7 +242,7 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("Next", "status nex")
         button = buttons.build_menu(3)
-    msg += f"<b>Tasks:</b> {tasks}{bmax_task} <b> | Uptime:</b> {currentTime} <b>| Free:</b> {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
+    msg += f"<b>Tasks:</b> {tasks}{bmax_task} <b> | UPTM:</b> {currentTime} <b>| Free:</b> {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)} <b>| Band:</b> {traf}"
     return msg, button
 
 
