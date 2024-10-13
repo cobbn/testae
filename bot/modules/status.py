@@ -17,6 +17,9 @@ async def mirror_status(_, message):
     if count == 0:
         currentTime = get_readable_time(time() - botStartTime)
         free = get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)
+        sent = get_readable_file_size(net_io_counters().bytes_sent)
+        recv = get_readable_file_size(net_io_counters().bytes_recv)
+        traf = get_readable_file_size(net_io_counters().bytes_sent + net_io_counters().bytes_recv)
         msg = 'No downloads are currently in progress.\n'
         msg += f"\n<b>Bot uptime</b>: {currentTime}"
         msg += f"\n<b>Free disk space</b>: {free}"
