@@ -8,7 +8,7 @@ from html import escape
 from signal import signal, SIGINT
 from aiofiles.os import path as aiopath, remove as aioremove
 from aiofiles import open as aiopen
-from psutil import disk_usage, cpu_percent, virtual_memory, boot_time
+from psutil import disk_usage, cpu_percent, virtual_memory, boot_time, net_io_counters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
 
