@@ -1,7 +1,7 @@
 from time import time
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.filters import command, regex
-from psutil import disk_usage
+from psutil import disk_usage, net_io_counters
 
 from bot import status_reply_dict_lock, download_dict, download_dict_lock, botStartTime, Interval, bot
 from bot.helper.telegram_helper.filters import CustomFilters
@@ -20,6 +20,7 @@ async def mirror_status(_, message):
         msg = 'No downloads are currently in progress.\n'
         msg += f"\n<b>Bot uptime</b>: {currentTime}"
         msg += f"\n<b>Free disk space</b>: {free}"
+        msg += f"\n<b>Bandwidth</b>: {traf}"
 
         reply_message = await sendMessage(message, msg, photo='Random')
         await deleteMessage(message)
